@@ -10,6 +10,7 @@ credentials.*
 # Logs
 pipeline.log
 cron_system.log
+dbt.log
 
 # Virtual environment
 __pycache__/
