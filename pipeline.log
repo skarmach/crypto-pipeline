@@ -2261,3 +2261,47 @@ Load package 1791338103.3481672 is LOADED and contains no failed jobs
 [0m01:55:15  
 [0m01:55:15  Done. PASS=11 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=0 TOTAL=11
 [Wed 07 Oct 2026 12:55:22 AEDT] Pipeline completed successfully.
+[Wed 07 Oct 2026 13:00:01 AEDT] Starting pipeline run
+[Wed 07 Oct 2026 13:00:01 AEDT] Starting data ingestion
+[2026-10-07T02:00:02.427986+00:00] Fetching ticker data...
+{'XETHZUSD': {'a': ['2655.61000', '1', '1.000'], 'b': ['2654.66000', '1', '1.000'], 'c': ['2655.10000', '2.32582700'], 'v': ['1737.64140329', '25614.81639101'], 'p': ['2680.08691', '2701.68913'], 't': [3368, 38244], 'l': ['2654.55000', '2654.55000'], 'h': ['2699.33000', '2724.02000'], 'o': '2697.15000'}, 'SOLUSD': {'a': ['118.92000', '6', '6.000'], 'b': ['118.90000', '6', '6.000'], 'c': ['118.88000', '0.05076061'], 'v': ['16477.48893247', '328991.77393103'], 'p': ['120.05672', '120.39973'], 't': [2488, 33814], 'l': ['118.88000', '118.88000'], 'h': ['120.69000', '121.97000'], 'o': '120.69000'}, 'XXBTZUSD': {'a': ['84357.60000', '2', '2.000'], 'b': ['84357.50000', '1', '1.000'], 'c': ['84357.60000', '0.00118543'], 'v': ['259.85846500', '2305.29248452'], 'p': ['85022.01478', '85765.40557'], 't': [9735, 104317], 'l': ['84351.90000', '84351.90000'], 'h': ['85588.90000', '86683.40000'], 'o': '85542.00000'}}
+Ingested successful: Pipeline crypto_realtime load step finished in 0.11 seconds
+1 load package(s) were loaded to destination postgres and into dataset raw_crypto
+The postgres destination used postgresql://dbt_user:***@localhost:5432/dbt_practice location to store data
+Load package 1791338408.0953858 is LOADED and contains no failed jobs
+[Wed 07 Oct 2026 13:00:13 AEDT] Starting data transformation
+[0m02:00:16  Running with dbt=1.12.5
+[0m02:00:17  Registered adapter: postgres=1.11.0
+[0m02:00:18  Found 2 models, 9 data tests, 1 source, 479 macros
+[0m02:00:18  
+[0m02:00:18  Concurrency: 4 threads (target='prod')
+[0m02:00:18  
+[0m02:00:18  1 of 11 START sql view model raw_crypto.stg_crypto_prices ...................... [RUN]
+[0m02:00:18  1 of 11 OK created sql view model raw_crypto.stg_crypto_prices ................. [[32mCREATE VIEW[0m in 0.17s]
+[0m02:00:18  2 of 11 START sql incremental model raw_crypto.fct_crypto_metrics .............. [RUN]
+[0m02:00:18  [[33mWARNING[0m]: Detected columns with numeric type and unspecified precision/scale, this can lead to unintended rounding: ['price_usd', 'rolling_6_period_avg_price', 'price_change_since_last_tick']`
+[0m02:00:19  2 of 11 OK created sql incremental model raw_crypto.fct_crypto_metrics ......... [[32mINSERT 0 2[0m in 0.45s]
+[0m02:00:19  6 of 11 START test not_null_fct_crypto_metrics_price_timestamp ................. [RUN]
+[0m02:00:19  4 of 11 START test not_null_fct_crypto_metrics_coin_name ....................... [RUN]
+[0m02:00:19  5 of 11 START test not_null_fct_crypto_metrics_price_change_since_last_tick .... [RUN]
+[0m02:00:19  3 of 11 START test not_null_fct_crypto_metrics_coin_id ......................... [RUN]
+[0m02:00:19  4 of 11 PASS not_null_fct_crypto_metrics_coin_name ............................. [[32mPASS[0m in 0.30s]
+[0m02:00:19  6 of 11 PASS not_null_fct_crypto_metrics_price_timestamp ....................... [[32mPASS[0m in 0.30s]
+[0m02:00:19  5 of 11 PASS not_null_fct_crypto_metrics_price_change_since_last_tick .......... [[32mPASS[0m in 0.30s]
+[0m02:00:19  3 of 11 PASS not_null_fct_crypto_metrics_coin_id ............................... [[32mPASS[0m in 0.31s]
+[0m02:00:19  7 of 11 START test not_null_fct_crypto_metrics_price_usd ....................... [RUN]
+[0m02:00:19  8 of 11 START test not_null_fct_crypto_metrics_rolling_6_period_avg_price ...... [RUN]
+[0m02:00:19  9 of 11 START test not_null_fct_crypto_metrics_surrogate_key ................... [RUN]
+[0m02:00:19  10 of 11 START test not_null_fct_crypto_metrics_symbol ......................... [RUN]
+[0m02:00:19  7 of 11 PASS not_null_fct_crypto_metrics_price_usd ............................. [[32mPASS[0m in 0.10s]
+[0m02:00:19  11 of 11 START test unique_fct_crypto_metrics_surrogate_key .................... [RUN]
+[0m02:00:19  8 of 11 PASS not_null_fct_crypto_metrics_rolling_6_period_avg_price ............ [[32mPASS[0m in 0.12s]
+[0m02:00:19  9 of 11 PASS not_null_fct_crypto_metrics_surrogate_key ......................... [[32mPASS[0m in 0.13s]
+[0m02:00:19  10 of 11 PASS not_null_fct_crypto_metrics_symbol ............................... [[32mPASS[0m in 0.14s]
+[0m02:00:19  11 of 11 PASS unique_fct_crypto_metrics_surrogate_key .......................... [[32mPASS[0m in 0.08s]
+[0m02:00:19  
+[0m02:00:19  Finished running 1 incremental model, 9 data tests, 1 view model in 0 hours 0 minutes and 1.44 seconds (1.44s).
+[0m02:00:19  
+[0m02:00:19  [32mCompleted successfully[0m
+[0m02:00:19  
+[0m02:00:19  Done. PASS=11 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=0 TOTAL=11
