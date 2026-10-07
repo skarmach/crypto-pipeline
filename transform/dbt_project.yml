@@ -36,3 +36,10 @@ models:
       +materialized: view
     marts:
       +materialized: table
+
+snapshots:
+  crypto_transform:
+    +target_schema: |
+      {%- if target.name == 'dev' -%} raw_crypto_dev
+      {%- else -%} crypto_transform
+      {%- endif -%}

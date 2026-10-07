@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: stg_crypto_prices
+    description: "Staging model for crypto prices"
+    tests:
+      - api_downtime:
+          timestamp_column: price_timestamp
+          max_hours_lag: 4
+          config:
+            severity: error

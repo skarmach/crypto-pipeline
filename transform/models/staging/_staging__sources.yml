@@ -1,0 +1,11 @@
+version: 2
+sources:
+  - name: dlt_crypto
+    schema: |
+      {%- if target.name == 'dev' -%}
+        raw_crypto_dev
+      {%- else -%}
+        raw_crypto
+      {%- endif -%}
+    tables:
+      - name: pricing_history
