@@ -1,2 +1,20 @@
 # crypto-pipeline
-POC E2E pipeline for realtime data
+POC E2E pipeline for realtime data. The Local Real-Time Data Platform: A Modern Data Stack Blueprint
+
+## Architectural Foundation & Advanced Data Ingestion
+The platform utilizes the Medallion Architecture to incrementally clean, structure, and refine raw telemetry from raw storage to clean production tables. Data ingestion is fully managed by dlt (Data Load Tool), which handles schema inference, type coercion, and incremental loading states automatically. The engine streams real-time asset parameters from the Kraken SDK component, injecting unified UTC timestamps and capturing multi-coin ticker feeds into an immutable PostgreSQL schema (Bronze Layer).
+
+## Modular Transformation & Code Reusability
+Once the data lands, the Silver Layer decouples raw ingestion from downstream analytics using dbt (Data Build Tool) views. This layer is built entirely on the software engineering principle of DRY (Don't Repeat Yourself), leveraging Jinja Templating and Nested Macros. A core macro handling mathematical rounding and anomaly safety floors is dynamically nested inside a Jinja For-Loop Macro. This loop iterates over a Python-style column string array, automatically expanding complex CASE WHEN blocks during compilation. This technique handles bulk columns simultaneously, formats numeric data types uniformly, and flags zero or negative pricing glitches before they reach the analytics layer.
+
+## Performance Optimization & Data Governance
+The analytical Gold Layer serves production-ready business intelligence through optimized fact tables. To handle continuous, long-term streaming data without slowing down the PostgreSQL database engine, the platform implements dbt Incremental Materialization using a hashed MD5 surrogate unique key. To prevent data corruption while calculating SQL Window Functions (such as rolling moving averages and price changes since the last tick), the model implements an Incremental Lookback Window strategy, pulling data from the trailing two hours to provide window functions with historical context before running an ultra-fast incremental append. To shield downstream charts from schema drift, the table is locked down using a strict dbt Model Contract enforced in a YAML schema configuration, blocking the pipeline instantly if column output names or data types deviate.
+
+## Enterprise Sandboxing & Git Version Control
+To maintain a safe local engineering workspace, code changes and physical database tables are separated using a combined branching and target environment framework:
+
+* Code Separation: Managed through Git version control. Stable code is committed to the main branch, while new metrics are designed in isolated feature/ branches, keeping the automated live pipeline shielded from incomplete configurations.
+* Data Separation: Managed through dbt Target Environments in a centralized profiles.yml file. Local terminal runs default to the dev target, building tables inside a isolated public_dev schema sandbox. The automated runtime explicitly passes the --target prod flag to route verified metrics safely into the live public schema.
+
+## Chapter 5: Lightweight Orchestration & High-Fidelity Visualization
+The entire end-to-end loop is fully automated on Debian using its native, lightweight scheduling daemon: cron. A master control Bash shell script manages environment variables, activates virtual environments, and utilizes Non-Blocking File Locking (flock) via a temporary file descriptor tracking channel to gracefully drop execution loops if a previous run is still active. Finally, data is visualized in a Streamlit dashboard, which parses database credentials dynamically from dlt's encrypted secrets.toml file to maintain a single source of truth. The presentation layer maps price tickers using the Altair visualization engine, configuring an un-pinned, Free-Scaling Y-Axis alongside a native Logarithmic Scale so coins of vastly different prices scale evenly. To maximize readability, the dashboard applies an Altair Vertical Pivot Selection Rule, projecting a responsive vertical guide line that tracks the mouse cursor along the X-axis (time) and snaps tooltips to the nearest data values effortlessly.
