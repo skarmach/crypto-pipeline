@@ -18,3 +18,9 @@ To maintain a safe local engineering workspace, code changes and physical databa
 
 ## Lightweight Orchestration & High-Fidelity Visualization
 The entire end-to-end loop is fully automated on Debian using its native, lightweight scheduling daemon: cron. A master control Bash shell script manages environment variables, activates virtual environments, and utilizes Non-Blocking File Locking (flock) via a temporary file descriptor tracking channel to gracefully drop execution loops if a previous run is still active. Finally, data is visualized in a Streamlit dashboard, which parses database credentials dynamically from dlt's encrypted secrets.toml file to maintain a single source of truth. The presentation layer maps price tickers using the Altair visualization engine, configuring an un-pinned, Free-Scaling Y-Axis alongside a native Logarithmic Scale so coins of vastly different prices scale evenly. To maximize readability, the dashboard applies an Altair Vertical Pivot Selection Rule, projecting a responsive vertical guide line that tracks the mouse cursor along the X-axis (time) and snaps tooltips to the nearest data values effortlessly.
+
+## Snapshot of raw data
+Snapshot of raw data is created to persist raw data for debugging and auditing purposes.
+
+## Custom test
+The `api_downtime` test is a custom test that checks for API downtime by monitoring the timestamp column for gaps exceeding the configured `max_hours_lag` threshold. If a gap is detected, the test fails and logs a warning or error message based on the configured severity level.

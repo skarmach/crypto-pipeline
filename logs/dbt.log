@@ -45,3 +45,19 @@ click.exceptions.Abort
 [0m11:59:53.043158 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb200e856e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb2011fa0f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb2011a3bd0>]}
 [0m11:59:53.043833 [debug] [MainThread]: Flushing usage events
 [0m11:59:59.223901 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m13:56:40.374573 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fcb01545be0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fcb00223ed0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fcb00223c50>]}
+
+
+============================== 13:56:40.379474 | 1a51c30d-9d50-48af-81ca-d7f05288f6bf ==============================
+[0m13:56:40.379474 [info ] [MainThread]: Running with dbt=1.12.5
+[0m13:56:40.380388 [debug] [MainThread]: running dbt with arguments {'hints_enabled': 'True', 'write_json': 'True', 'version_check': 'True', 'log_path': 'logs', 'introspect': 'True', 'maximum_seed_size_mib': '1', 'log_cache_events': 'False', 'cache_selected_only': 'False', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'empty': 'False', 'printer_width': '80', 'no_print': 'None', 'debug': 'False', 'static_parser': 'True', 'quiet': 'False', 'log_format': 'default', 'use_colors': 'True', 'partial_parse': 'True', 'fail_fast': 'False', 'use_experimental_parser': 'False', 'warn_error': 'None', 'profiles_dir': '/home/skarmach/.dbt', 'send_anonymous_usage_stats': 'True', 'indirect_selection': 'eager', 'invocation_command': 'dbt snapshot'}
+[0m13:56:40.381305 [error] [MainThread]: [[31mERROR[0m]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path /home/skarmach/dbt-local-project/crypto_pipeline/dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m13:56:40.382690 [debug] [MainThread]: Resource report: {"command_name": "snapshot", "command_success": false, "command_wall_clock_time": 0.15411653, "process_in_blocks": "24", "process_kernel_time": 0.251297, "process_mem_max_rss": "110920", "process_out_blocks": "8", "process_user_time": 2.364588}
+[0m13:56:40.383527 [debug] [MainThread]: Command `dbt snapshot` failed at 13:56:40.383327 after 0.16 seconds
+[0m13:56:40.384169 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fcb0002eea0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fcb001ab410>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fcb00079bf0>]}
+[0m13:56:40.384888 [debug] [MainThread]: Flushing usage events
+[0m13:56:46.630446 [debug] [MainThread]: An error was encountered while trying to flush usage events
