@@ -1,0 +1,51 @@
+version: 2
+
+models:
+  - name: fct_crypto_metrics
+    description: "Gold layer fact table tracking real-time crpytocurrenty metrics"
+    # Enforce model contract
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: surrogate_key
+        data_type: text
+        description: "MD5 has acting as unique key"
+        tests:
+          - unique
+          - not_null
+      - name: coin_id
+        data_type: text
+        description: "Unique identifier for the coin"
+        tests:
+          - not_null
+      - name: symbol
+        data_type: text
+        description: "Symbol of the coin"
+        tests:
+          - not_null
+      - name: coin_name
+        data_type: text
+        description: "Name of the coin"
+        tests:
+          - not_null
+      - name: price_timestamp
+        data_type: timestamp without time zone
+        description: "Timestamp of the price"
+        tests:
+          - not_null
+      - name: price_usd
+        data_type: numeric
+        description: "Price in USD"
+        tests:
+          - not_null
+      - name: rolling_6_period_avg_price
+        data_type: numeric
+        description: "Rolling 6 period average price"
+        tests:
+          - not_null
+      - name: price_change_since_last_tick
+        data_type: numeric
+        description: "Price change since last tick"
+        tests:
+          - not_null

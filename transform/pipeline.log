@@ -1,0 +1,48 @@
+[0m02:44:37  Running with dbt=1.12.5
+[0m02:44:38  Registered adapter: postgres=1.11.0
+[0m02:44:38  Found 2 models, 1 source, 477 macros
+[0m02:44:38  
+[0m02:44:38  Concurrency: 4 threads (target='dev')
+[0m02:44:38  
+[0m02:44:39  1 of 2 START sql view model raw_crypto.stg_crypto_prices ....................... [RUN]
+[0m02:44:39  1 of 2 OK created sql view model raw_crypto.stg_crypto_prices .................. [[32mCREATE VIEW[0m in 0.17s]
+[0m02:44:39  2 of 2 START sql table model raw_crypto.fct_crypto_metrics ..................... [RUN]
+[0m02:44:39  2 of 2 OK created sql table model raw_crypto.fct_crypto_metrics ................ [[32mSELECT 4[0m in 0.15s]
+[0m02:44:39  
+[0m02:44:39  Finished running 1 table model, 1 view model in 0 hours 0 minutes and 0.53 seconds (0.53s).
+[0m02:44:39  
+[0m02:44:39  [32mCompleted successfully[0m
+[0m02:44:39  
+[0m02:44:39  Done. PASS=2 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=0 TOTAL=2
+[0m02:46:39  Running with dbt=1.12.5
+[0m02:46:39  Registered adapter: postgres=1.11.0
+[0m02:46:40  Found 2 models, 1 source, 477 macros
+[0m02:46:40  
+[0m02:46:40  Concurrency: 4 threads (target='dev')
+[0m02:46:40  
+[0m02:46:40  1 of 2 START sql view model raw_crypto.stg_crypto_prices ....................... [RUN]
+[0m02:46:40  1 of 2 OK created sql view model raw_crypto.stg_crypto_prices .................. [[32mCREATE VIEW[0m in 0.18s]
+[0m02:46:40  2 of 2 START sql table model raw_crypto.fct_crypto_metrics ..................... [RUN]
+[0m02:46:40  2 of 2 OK created sql table model raw_crypto.fct_crypto_metrics ................ [[32mSELECT 6[0m in 0.15s]
+[0m02:46:40  
+[0m02:46:40  Finished running 1 table model, 1 view model in 0 hours 0 minutes and 0.61 seconds (0.61s).
+[0m02:46:41  
+[0m02:46:41  [32mCompleted successfully[0m
+[0m02:46:41  
+[0m02:46:41  Done. PASS=2 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=0 TOTAL=2
+[0m02:48:37  Running with dbt=1.12.5
+[0m02:48:38  Registered adapter: postgres=1.11.0
+[0m02:48:38  Found 2 models, 1 source, 477 macros
+[0m02:48:38  
+[0m02:48:38  Concurrency: 4 threads (target='dev')
+[0m02:48:38  
+[0m02:48:39  1 of 2 START sql view model raw_crypto.stg_crypto_prices ....................... [RUN]
+[0m02:48:39  1 of 2 OK created sql view model raw_crypto.stg_crypto_prices .................. [[32mCREATE VIEW[0m in 0.15s]
+[0m02:48:39  2 of 2 START sql table model raw_crypto.fct_crypto_metrics ..................... [RUN]
+[0m02:48:39  2 of 2 OK created sql table model raw_crypto.fct_crypto_metrics ................ [[32mSELECT 8[0m in 0.12s]
+[0m02:48:39  
+[0m02:48:39  Finished running 1 table model, 1 view model in 0 hours 0 minutes and 0.53 seconds (0.53s).
+[0m02:48:39  
+[0m02:48:39  [32mCompleted successfully[0m
+[0m02:48:39  
+[0m02:48:39  Done. PASS=2 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=0 TOTAL=2
